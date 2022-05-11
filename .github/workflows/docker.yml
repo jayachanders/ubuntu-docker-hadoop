@@ -34,7 +34,7 @@ jobs:
 
       # Runs a docker build 
       - name: Build and push hadoop base
-        uses: jayachanders/ubuntu-docker-hadoop@v3
+        uses: jayachanders/ubuntu-docker-hadoop@v2
         with:
           context: ./base
           platforms: linux/amd64,linux/arm64
