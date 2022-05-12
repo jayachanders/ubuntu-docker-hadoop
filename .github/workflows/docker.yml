@@ -44,7 +44,7 @@ jobs:
           tags: jayachander/hadoop-base:latest,jayachander/hadoop-base:1.0.0-hadoop3.3.2-java8
 
       - name: Build and push hadoop namenode
-        uses: jayachanders/ubuntu-docker-hadoop@v3
+        uses: ./
         with:
           context: ./namenode
           file: ./namenode/dockerfile
@@ -53,7 +53,7 @@ jobs:
           tags: jayachander/hadoop-namenode:latest,jayachander/hadoop-namenode:1.0.0-hadoop3.3.2-java8
 
       - name: Build and push hadoop datanode
-        uses: jayachanders/ubuntu-docker-hadoop@v3
+        uses: ./
         with:
           context: ./datanode
           file: ./datanode/dockerfile
@@ -62,7 +62,7 @@ jobs:
           tags: jayachander/hadoop-datanode:latest,jayachander/hadoop-datanode:1.0.0-hadoop3.3.2-java8
 
       - name: Build and push hadoop resourcemanager
-        uses: jayachanders/ubuntu-docker-hadoop@v3
+        uses: ./
         with:
           context: ./resourcemanager
           file: ./resourcemanager/dockerfile
@@ -71,7 +71,7 @@ jobs:
           tags: jayachander/hadoop-resourcemanager:latest,jayachander/hadoop-resourcemanager:1.0.0-hadoop3.3.2-java8
 
       - name: Build and push hadoop historyserver
-        uses: jayachanders/ubuntu-docker-hadoop@v3
+        uses: ./
         with:
           context: ./historyserver
           file: ./historyserver/dockerfile
@@ -80,7 +80,7 @@ jobs:
           tags: jayachander/hadoop-historyserver:latest,jayachander/hadoop-historyserver:1.0.0-hadoop3.3.2-java8
 
       - name: Build and push hadoop nodemanager
-        uses: jayachanders/ubuntu-docker-hadoop@v3
+        uses: ./
         with:
           context: ./nodemanager
           file: ./nodemanager/dockerfile
