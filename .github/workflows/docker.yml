@@ -34,7 +34,8 @@ jobs:
 
       # Runs a docker build 
       - name: Build and push hadoop base
-        uses: jayachanders/ubuntu-docker-hadoop@v2
+        #uses: jayachanders/ubuntu-docker-hadoop@v2
+        uses: ./
         with:
           context: ./base
           file: ./base/dockerfile
