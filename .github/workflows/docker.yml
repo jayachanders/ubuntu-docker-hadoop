@@ -35,10 +35,10 @@ jobs:
       # Runs a docker build 
       - name: Build and push hadoop base
         #uses: jayachanders/ubuntu-docker-hadoop@v2
-        uses: ./
+        uses: jayachanders/ubuntu-docker-hadoop@v2
         with:
           context: ./base
-          file: ./base/dockerfile
+          file: ./base/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: jayachander/hadoop-base:latest,jayachander/hadoop-base:1.0.0-hadoop3.3.2-java8
@@ -47,7 +47,7 @@ jobs:
         uses: ./
         with:
           context: ./namenode
-          file: ./namenode/dockerfile
+          file: ./namenode/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: jayachander/hadoop-namenode:latest,jayachander/hadoop-namenode:1.0.0-hadoop3.3.2-java8
@@ -56,7 +56,7 @@ jobs:
         uses: ./
         with:
           context: ./datanode
-          file: ./datanode/dockerfile
+          file: ./datanode/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: jayachander/hadoop-datanode:latest,jayachander/hadoop-datanode:1.0.0-hadoop3.3.2-java8
@@ -65,7 +65,7 @@ jobs:
         uses: ./
         with:
           context: ./resourcemanager
-          file: ./resourcemanager/dockerfile
+          file: ./resourcemanager/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: jayachander/hadoop-resourcemanager:latest,jayachander/hadoop-resourcemanager:1.0.0-hadoop3.3.2-java8
@@ -74,7 +74,7 @@ jobs:
         uses: ./
         with:
           context: ./historyserver
-          file: ./historyserver/dockerfile
+          file: ./historyserver/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: jayachander/hadoop-historyserver:latest,jayachander/hadoop-historyserver:1.0.0-hadoop3.3.2-java8
@@ -83,7 +83,7 @@ jobs:
         uses: ./
         with:
           context: ./nodemanager
-          file: ./nodemanager/dockerfile
+          file: ./nodemanager/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: jayachander/hadoop-nodemanager:latest,jayachander/hadoop-nodemanager:1.0.0-hadoop3.3.2-java8
