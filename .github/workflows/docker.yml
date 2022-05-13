@@ -28,9 +28,12 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Login to DockerHub
         uses: docker/login-action@v2
+        env:
+          DOCKER_USER: ${{ secrets.DOCKER_USER }}   
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }} 
         with:
-          username: ${{ secrets.docker.DOCKER_USER }}
-          password: ${{ secrets.docker.DOCKER_PASSWORD }}
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
       # Runs a docker build 
       - name: Build and push hadoop base
