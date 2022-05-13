@@ -34,10 +34,11 @@ jobs:
 
       # Runs a docker build 
       - name: Build and push hadoop base
-        uses: jayachanders/ubuntu-docker-hadoop@v3
+        #uses: jayachanders/ubuntu-docker-hadoop@v3
+        uses: docker/build-push-action@v3
         with:
           context: ./base
-          #file: ./base/Dockerfile
+          file: ./base/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: jayachander/hadoop-base:latest,jayachander/hadoop-base:1.0.0-hadoop3.3.2-java8
