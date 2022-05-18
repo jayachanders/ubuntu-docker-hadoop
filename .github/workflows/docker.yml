@@ -41,7 +41,7 @@ jobs:
         with:
           context: ./base
           file: ./base/Dockerfile
-          platforms: linux/amd64,,linux/armhf,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm/v8,linux/arm64
           push: true
           tags: jayachander/hadoop-base:latest,jayachander/hadoop-base:1.0.0-hadoop3.3.2-java8
 
