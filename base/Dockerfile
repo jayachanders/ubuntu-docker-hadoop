@@ -1,13 +1,6 @@
 FROM ubuntu:20.04
 
 LABEL maintainer="Jayachander Surbiryala <jayachander.it@gmail.com>"
-#LABEL description="This is custom Docker Image for \
-#the Spark Services."
-
-#ENV INIT_DAEMON_STEP spark_master_init
-
-#ENV BASE_URL=https://archive.apache.org/dist/spark/
-#ENV SPARK_VERSION=3.2.0
 
 # Disable Prompt During Packages Installation
 ARG DEBIAN_FRONTEND=noninteractive
