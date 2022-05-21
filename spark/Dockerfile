@@ -27,6 +27,7 @@ COPY finish-step.sh /
 RUN apt-get update \
 	&& apt-get upgrade -y \
     && apt-get install -y --no-install-recommends \
+    wget \
     python3 \
     python3-pip  \
     && wget --no-verbose -O ${BASE_URL}/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-without-hadoop.tgz \
