@@ -28,9 +28,12 @@ RUN apt-get update \
     && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends \
     wget \
+    gcc \
     python3 \
-    python3-pip \
-    && wget ${BASE_URL}/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-without-hadoop.tgz \
+    python3-dev \
+    python3-pip 
+
+RUN wget ${BASE_URL}/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-without-hadoop.tgz \
     && tar -xvzf spark-${SPARK_VERSION}-bin-without-hadoop.tgz \
     && mv spark-${SPARK_VERSION}-bin-without-hadoop /usr/local/spark \
     && rm spark-${SPARK_VERSION}-bin-without-hadoop.tgz \
