@@ -25,7 +25,7 @@ COPY finish-step.sh /
 
 # && wget --no-verbose -O ${BASE_URL}/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz \
 RUN apt-get update \
-	&& apt-get upgrade -y \
+    && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends \
     wget \
     python3 \
@@ -34,12 +34,12 @@ RUN apt-get update \
     && tar -xvzf spark-${SPARK_VERSION}-bin-without-hadoop.tgz \
     && mv spark-${SPARK_VERSION}-bin-without-hadoop /usr/local/spark \
     && rm spark-${SPARK_VERSION}-bin-without-hadoop.tgz \
-    && pip3 install -y jupyterlab findspark \
+    && pip3 install jupyterlab findspark \
     && cd / \
     && chmod +x *.sh  \
     && rm -rf /var/lib/apt/lists/* \
     && rm -rf /var/cache/apt/archives \
-	&& apt clean
+    && apt clean
 
 # install jupyter lab, and findspark (for easily using spark in jupyter)
 
