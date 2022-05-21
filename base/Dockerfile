@@ -19,7 +19,9 @@ RUN apt-get update \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& apt clean
 
-ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+RUN ARCH="$(dpkg --print-architecture)";
+
+ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-${ARCH}/
 
 RUN curl -O https://dist.apache.org/repos/dist/release/hadoop/common/KEYS
 
@@ -45,7 +47,7 @@ ENV HADOOP_HOME=/opt/hadoop-$HADOOP_VERSION
 ENV HADOOP_CONF_DIR=/etc/hadoop
 ENV MULTIHOMED_NETWORK=1
 ENV USER=root
-ENV PATH=$HADOOP_HOME/bin/:$PATH
+ENV PATH=$HADOOP_HOME/bin/:$HADOOP_HOME/sbin:$PATH
 
 ADD entrypoint.sh /entrypoint.sh
 

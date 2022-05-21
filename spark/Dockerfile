@@ -12,11 +12,12 @@ ENV INIT_DAEMON_STEP spark_master_init
 # JAVA_HOME is already set in base image
 ENV SPARK_HOME="/usr/local/spark"
 ENV PATH=$SPARK_HOME/bin/:$SPARK_HOME/sbin/:$PATH
-ENV SPARK_DIST_CLASSPATH=$(hadoop classpath)
+# ENV SPARK_DIST_CLASSPATH=$(hadoop classpath)
 
 ENV BASE_URL=https://archive.apache.org/dist/spark/
 ENV SPARK_VERSION=3.2.1
-ENV HADOOP_VERSION=3.3
+# Not used
+#ENV HADOOP_VERSION=3.3
 
 COPY wait-for-step.sh /
 COPY execute-step.sh /
@@ -34,7 +35,10 @@ RUN apt-get update \
       && rm spark-${SPARK_VERSION}-bin-without-hadoop.tgz \
       && pip3 install -y jupyterlab findspark \
       && cd / \
-      && chmod +x *.sh
+      && chmod +x *.sh  \
+      && rm -rf /var/lib/apt/lists/* \
+      && rm -rf /var/cache/apt/archives \
+	  && apt clean
 
 # install jupyter lab, and findspark (for easily using spark in jupyter)
 
