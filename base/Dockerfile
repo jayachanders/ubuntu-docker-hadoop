@@ -15,7 +15,7 @@ RUN apt-get update \
 	netcat \
 	gnupg \
 	libsnappy-dev \
-	vim \
+	# vim \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& apt clean
 
