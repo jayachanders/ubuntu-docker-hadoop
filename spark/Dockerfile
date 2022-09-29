@@ -55,6 +55,11 @@ RUN chmod a+x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
 
+# commented and added above
+#FROM jayachander/hadoop-base:1.0.0-hadoop3.3.2-java8
+#
+#LABEL maintainer="Jayachander Surbiryala <jayachander.it@gmail.com>"
+
 # Disable Prompt During Packages Installation
 ARG DEBIAN_FRONTEND=noninteractive
 

@@ -55,6 +55,11 @@ RUN chmod a+x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
 
+# commented and added above
+#FROM jayachander/hadoop-base:1.0.0-hadoop3.3.2-java8
+#
+#LABEL maintainer="Jayachander Surbiryala <jayachander.it@gmail.com>"
+
 HEALTHCHECK CMD curl -f http://localhost:9870/ || exit 1
 
 ENV HDFS_CONF_dfs_namenode_name_dir=file:///hadoop/dfs/name
