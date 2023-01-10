@@ -21,7 +21,7 @@ RUN apt-get update \
 
 RUN ARCH="$(dpkg --print-architecture)";
 
-ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-${ARCH}/
+ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-$ARCH
 
 RUN curl -O https://dist.apache.org/repos/dist/release/hadoop/common/KEYS
 
