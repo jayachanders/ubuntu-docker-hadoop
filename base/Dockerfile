@@ -24,6 +24,7 @@ RUN ARCH="$(dpkg --print-architecture)";
 ARG TARGETARCH
 #ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-${ARCH}/
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-$TARGETARCH \
+	PATH="${PATH}"
 
 RUN curl -O https://dist.apache.org/repos/dist/release/hadoop/common/KEYS
 
