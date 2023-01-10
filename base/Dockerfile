@@ -20,10 +20,10 @@ RUN apt-get update \
 	&& apt clean
 
 RUN ARCH="$(dpkg --print-architecture)";
-# Test ARG passing
-ARG ARCH
 
-ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-${ARCH}/
+ARG TARGETARCH
+#ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-${ARCH}/
+ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-$TARGETARCH \
 
 RUN curl -O https://dist.apache.org/repos/dist/release/hadoop/common/KEYS
 
