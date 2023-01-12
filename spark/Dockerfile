@@ -1,5 +1,5 @@
-#FROM jayachander/hadoop-base:1.0.0-hadoop3.3.2-java8
-FROM ubuntu:20.04
+FROM jayachander/hadoop-base:1.0.0-hadoop3.3.2-java8
+#FROM ubuntu:20.04
 
 LABEL maintainer="Jayachander Surbiryala <jayachander.it@gmail.com>"
 
@@ -11,8 +11,8 @@ ENV INIT_DAEMON_BASE_URI http://identifier/init-daemon
 ENV INIT_DAEMON_STEP spark_master_init
 
 # JAVA_HOME is already set in base image
-ARG TARGETARCH
-ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-$TARGETARCH
+#ARG TARGETARCH
+#ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-$TARGETARCH
 
 ENV SPARK_HOME="/usr/local/spark"
 ENV PATH=$SPARK_HOME/bin/:$SPARK_HOME/sbin/:$PATH
@@ -21,7 +21,7 @@ ENV PATH=$SPARK_HOME/bin/:$SPARK_HOME/sbin/:$PATH
 ENV BASE_URL=https://archive.apache.org/dist/spark/
 ENV SPARK_VERSION=3.2.1
 # Not used
-ENV HADOOP_VERSION=3.3.2
+#ENV HADOOP_VERSION=3.3.2
 
 COPY wait-for-step.sh /
 COPY execute-step.sh /
@@ -31,7 +31,7 @@ COPY finish-step.sh /
 RUN apt-get update \
     && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends \
-    openjdk-8-jdk \
+#    openjdk-8-jdk \
     wget \
     gcc \
     python3 \
