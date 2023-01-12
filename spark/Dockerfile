@@ -11,6 +11,9 @@ ENV INIT_DAEMON_BASE_URI http://identifier/init-daemon
 ENV INIT_DAEMON_STEP spark_master_init
 
 # JAVA_HOME is already set in base image
+ARG TARGETARCH
+ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-$TARGETARCH
+
 ENV SPARK_HOME="/usr/local/spark"
 ENV PATH=$SPARK_HOME/bin/:$SPARK_HOME/sbin/:$PATH
 # ENV SPARK_DIST_CLASSPATH=$(hadoop classpath)
@@ -18,7 +21,7 @@ ENV PATH=$SPARK_HOME/bin/:$SPARK_HOME/sbin/:$PATH
 ENV BASE_URL=https://archive.apache.org/dist/spark/
 ENV SPARK_VERSION=3.2.1
 # Not used
-#ENV HADOOP_VERSION=3.3
+ENV HADOOP_VERSION=3.3.2
 
 COPY wait-for-step.sh /
 COPY execute-step.sh /
@@ -28,16 +31,19 @@ COPY finish-step.sh /
 RUN apt-get update \
     && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends \
+    openjdk-8-jdk \
     wget \
     gcc \
     python3 \
     python3-dev \
-    python3-pip 
+    python3-pip \
+    python3-virtualenv 
 
 RUN wget ${BASE_URL}/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-without-hadoop.tgz \
     && tar -xvzf spark-${SPARK_VERSION}-bin-without-hadoop.tgz \
     && mv spark-${SPARK_VERSION}-bin-without-hadoop /usr/local/spark \
     && rm spark-${SPARK_VERSION}-bin-without-hadoop.tgz \
+    && pip3 install --upgrade pip3 \
     && pip3 install jupyterlab findspark pyspark \
     && cd / \
     && chmod +x *.sh  \
@@ -54,6 +60,11 @@ RUN wget ${BASE_URL}/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-without-h
 # Note: this is needed when you use Python 3.3 or greater
 ENV PYTHONHASHSEED 1
 
+# Define working directory
+WORKDIR /
+
+# Define default command
+CMD ["bash"]
 
 # Spark files can also be run as this, if you prefer this to jupyter
 #spark-submit <<<./your-spark-file.py>>> --master yarn --deploy-mode cluster
