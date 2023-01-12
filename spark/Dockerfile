@@ -43,7 +43,6 @@ RUN wget ${BASE_URL}/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-without-h
     && tar -xvzf spark-${SPARK_VERSION}-bin-without-hadoop.tgz \
     && mv spark-${SPARK_VERSION}-bin-without-hadoop /usr/local/spark \
     && rm spark-${SPARK_VERSION}-bin-without-hadoop.tgz \
-    && pip3 install --upgrade pip3 \
     && pip3 install jupyterlab findspark pyspark \
     && cd / \
     && chmod +x *.sh  \
