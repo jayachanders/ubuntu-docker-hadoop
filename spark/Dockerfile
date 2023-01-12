@@ -1,4 +1,5 @@
-FROM jayachander/hadoop-base:1.0.0-hadoop3.3.2-java8
+#FROM jayachander/hadoop-base:1.0.0-hadoop3.3.2-java8
+FROM ubuntu:20.04
 
 LABEL maintainer="Jayachander Surbiryala <jayachander.it@gmail.com>"
 
@@ -37,7 +38,7 @@ RUN wget ${BASE_URL}/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-without-h
     && tar -xvzf spark-${SPARK_VERSION}-bin-without-hadoop.tgz \
     && mv spark-${SPARK_VERSION}-bin-without-hadoop /usr/local/spark \
     && rm spark-${SPARK_VERSION}-bin-without-hadoop.tgz \
-    && pip3 install jupyterlab findspark \
+    && pip3 install jupyterlab findspark pyspark \
     && cd / \
     && chmod +x *.sh  \
     && rm -rf /var/lib/apt/lists/* \
