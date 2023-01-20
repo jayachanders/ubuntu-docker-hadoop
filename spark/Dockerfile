@@ -43,7 +43,7 @@ RUN wget ${BASE_URL}/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-without-h
     && tar -xvzf spark-${SPARK_VERSION}-bin-without-hadoop.tgz \
     && mv spark-${SPARK_VERSION}-bin-without-hadoop /usr/local/spark \
     && rm spark-${SPARK_VERSION}-bin-without-hadoop.tgz \
-    && pip3 install jupyterlab findspark pyspark \
+    && pip3 install jupyterlab findspark \
     && cd / \
     && chmod +x *.sh  \
     && rm -rf /var/lib/apt/lists/* \
@@ -63,7 +63,7 @@ ENV PYTHONHASHSEED 1
 WORKDIR /
 
 # Define default command
-CMD ["bash"]
+CMD ["sleep", "infinity"]
 
 # Spark files can also be run as this, if you prefer this to jupyter
 #spark-submit <<<./your-spark-file.py>>> --master yarn --deploy-mode cluster

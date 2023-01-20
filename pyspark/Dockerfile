@@ -26,7 +26,7 @@ RUN \
     pip3 install pyspark
 
 # Define working directory
-WORKDIR /data
+WORKDIR /
 
 # Define default command
-CMD ["bash"]
+CMD ["sleep", "infinity"]
